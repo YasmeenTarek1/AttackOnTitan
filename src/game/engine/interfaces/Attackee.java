@@ -1,8 +1,9 @@
 package game.engine.interfaces;
 
+// Interface containing the methods available to all objects that GETS ATTACKED
 public interface Attackee {
-	public int getCurrentHealth();
-	public void setCurrentHealth(int health);
-	public int getResourcesValue();
+	int getCurrentHealth();
+	void setCurrentHealth(int health);
+	int getResourcesValue();
 	
 }
