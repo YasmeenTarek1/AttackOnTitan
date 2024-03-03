@@ -2,7 +2,7 @@ package game.engine.titans;
 
 import game.engine.interfaces.*;
 
-public abstract class Titan implements Attackee , Attacker, Mobil , Comparable{
+public abstract class Titan implements Attackee , Attacker, Mobil , Comparable<Titan>{
     private final int baseHealth;     //  Original titan’s health
     private int currentHealth;        //  Current titan’s health
     private final int baseDamage;     //  Amount of damage a titan would cause while attacking a wall
@@ -77,14 +77,17 @@ public abstract class Titan implements Attackee , Attacker, Mobil , Comparable{
 		return dangerLevel;
 	}
     
-    public int compareTo(Object o){ //ascending
-    	if(o instanceof Titan) {
-			Titan p = (Titan) o;
-			return this.distanceFromBase - p.distanceFromBase;
-		}
-    	else
-			return 0;
+    public int compareTo(Titan o){ //ascending
+		return this.distanceFromBase - o.distanceFromBase;
     }
+//	public int compareTo(Object o){ //ascending
+//		if(o instanceof Titan) {
+//			Titan p = (Titan) o;
+//			return this.distanceFromBase - p.distanceFromBase;
+//		}
+//		else
+//			return 0;
+//	}
    
     
     
