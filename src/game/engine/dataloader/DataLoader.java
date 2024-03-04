@@ -1,4 +1,5 @@
 package game.engine.dataloader;
+
 import game.engine.titans.TitanRegistry;
 import game.engine.weapons.WeaponRegistry;
 import java.io.BufferedReader;
@@ -8,8 +9,8 @@ import java.util.HashMap;
 
 
 public class DataLoader {
-    private final String TITANS_FILE_NAME = "titans.csv";   // Name of the titan’s csv file
-    private final String WEAPONS_FILE_NAME = "weapons.csv"; // Name of the weapon’s csv file.
+    private static final String TITANS_FILE_NAME = "titans.csv";   // Name of the titan’s csv file
+    private static final String WEAPONS_FILE_NAME = "weapons.csv"; // Name of the weapon’s csv file.
 
     public static HashMap<Integer, WeaponRegistry> readWeaponRegistry() throws IOException{
         BufferedReader br = new BufferedReader(new FileReader("weapons.csv"));
@@ -18,13 +19,12 @@ public class DataLoader {
         while( (line = br.readLine()) != null){
             String[] str = line.split(",");
             WeaponRegistry w;
-            if(str.length == 2)
-                w = new WeaponRegistry(Integer.parseInt(str[0]) , Integer.parseInt(str[1]));
-            else if(str.length == 4)
-                w = new WeaponRegistry(Integer.parseInt(str[0]) , Integer.parseInt(str[1]) , Integer.parseInt(str[2]) , str[3]);
+            String name = str[3];
+            if(name.equals("VolleySpreadCannon"))
+                w = new WeaponRegistry(Integer.parseInt(str[0]), Integer.parseInt(str[1]), Integer.parseInt(str[2]), str[3], Integer.parseInt(str[4]), Integer.parseInt(str[5]));
             else
-                w = new WeaponRegistry(Integer.parseInt(str[0]) , Integer.parseInt(str[1]) , Integer.parseInt(str[2]) , str[3] , Integer.parseInt(str[4]) , Integer.parseInt(str[5]));
-            map.put(Integer.parseInt(str[0]) , w);
+                w = new WeaponRegistry(Integer.parseInt(str[0]), Integer.parseInt(str[1]), Integer.parseInt(str[2]), str[3]);
+            map.put(Integer.parseInt(str[0]) , w); // Mapping the Weapon Registry to its Weapon Type
         }
         return map;
     }

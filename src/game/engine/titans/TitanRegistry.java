@@ -1,12 +1,15 @@
 package game.engine.titans;
 
 public class TitanRegistry {
-    private final int code; // Type of titan.
-    private final int baseHealth;
-    private final int baseDamage;
+
+    // A place to store the titan’s information that was read from the csv file.
+
+    private final int code;                 // Type of titan.
+    private final int baseHealth;           //  Original titan’s health
+    private final int baseDamage;           //  Amount of damage a titan would cause while attacking a wall
     private final int heightInMeters;
     private final int speed;
-    private final int resourcesValue;
+    private final int resourcesValue;       //  Amount of resources that are gained by defeating the titan
     private final int dangerLevel;
 
     public TitanRegistry(){

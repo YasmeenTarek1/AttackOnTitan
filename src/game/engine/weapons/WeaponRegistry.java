@@ -1,6 +1,9 @@
 package game.engine.weapons;
 
 public class WeaponRegistry {
+
+    // A place to store the weapon’s information that was read from the csv file.
+
     private final int code;     // The type of weapon.
     private final int price;    // price of the weapon.
     private final int damage;   // Amount of damage a weapon can cause
