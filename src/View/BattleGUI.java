@@ -61,6 +61,10 @@ public class BattleGUI extends Scene {
     private HBox info , buttons;
     private StackPane box3;
     private Pane weaponShopRoot;
+    private ButtonGame w1;
+	private ButtonGame w2;
+	private ButtonGame w3;
+	private ButtonGame w4;
 
     public BattleGUI(StackPane p) {
         super(p, 1550, 870);
@@ -532,10 +536,10 @@ public class BattleGUI extends Scene {
         Image weapon3 = new Image("file:Media/Visuals/Sniper Cannon.png");
         Image weapon4 = new Image("file:Media/Visuals/Wall Trap.png");
 
-        ButtonGame w1 = new ButtonGame(weapon1, 360, 170);// piercing
-        ButtonGame w2 = new ButtonGame(weapon2, 300, 100);// volley
-        ButtonGame w3 = new ButtonGame(weapon3, 350, 230); // sniper
-        ButtonGame w4 = new ButtonGame(weapon4, 400, 200);// walltrap
+         w1 = new ButtonGame(weapon1, 360, 170);// piercing
+         w2 = new ButtonGame(weapon2, 300, 100);// volley
+         w3 = new ButtonGame(weapon3, 350, 230); // sniper
+         w4 = new ButtonGame(weapon4, 400, 200);// walltrap
 
 
         w1.setLayoutX(240);
@@ -637,6 +641,10 @@ public class BattleGUI extends Scene {
             updateGUI();
             FinishWeaponShop = true;
         } catch (InvalidLaneException e) {
+            w1.setDisable(true);
+            w2.setDisable(true);
+            w3.setDisable(true);
+            w4.setDisable(true);
 
             ImageView invalidlanesMessage = new ImageView(new Image("file:Media/Visuals/Defeated Lanes Exception.png"));
             invalidlanesMessage.setFitWidth(300);
@@ -669,9 +677,16 @@ public class BattleGUI extends Scene {
                 for (Node node : weaponShopRoot.getChildren())
                     if (node != all)
                         node.setEffect(null);
+                w1.setDisable(false);
+                w2.setDisable(false);
+                w3.setDisable(false);
+                w4.setDisable(false);
             });
         } catch (InsufficientResourcesException e) {
-
+            w1.setDisable(true);
+            w2.setDisable(true);
+            w3.setDisable(true);
+            w4.setDisable(true);
             ImageView insufficientMessage = new ImageView(new Image("file:Media/Visuals/No Enough Resources Exception.png"));
             insufficientMessage.setFitWidth(300);
             insufficientMessage.setFitHeight(340);
@@ -701,6 +716,10 @@ public class BattleGUI extends Scene {
                 for (Node node : weaponShopRoot.getChildren())
                     if (node != all)
                         node.setEffect(null);
+                w1.setDisable(false);
+                w2.setDisable(false);
+                w3.setDisable(false);
+                w4.setDisable(false);
             });
             ExitShop.getButton().setOnAction(q -> {
                 stage.close();
@@ -708,6 +727,10 @@ public class BattleGUI extends Scene {
                 for (Node node : weaponShopRoot.getChildren())
                     if (node != all)
                         node.setEffect(null);
+                w1.setDisable(false);
+                w2.setDisable(false);
+                w3.setDisable(false);
+                w4.setDisable(false);
             });
         }
         resourcesValue.setText("" + b.getResourcesGathered());
