@@ -268,7 +268,6 @@ public class BattleGUI extends Scene {
             v.setTranslateX(-138);
             v.getChildren().addAll(lane1, lane2, lane3, lane4, lane5);
         }
-
         chooselanesroot.getChildren().addAll(v);
         chooselanesroot.setCursor(new ImageCursor(new Image("file:Media/Visuals/Cursor.png")));
 
