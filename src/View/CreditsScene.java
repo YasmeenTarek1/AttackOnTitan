@@ -11,6 +11,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.ImageCursor;
+
 
 
 public class CreditsScene extends Scene{
@@ -18,7 +20,7 @@ public class CreditsScene extends Scene{
     public CreditsScene(Pane root) {
         super(root);
         Controller.music.stop();
-     this.setCursor(new ImageCursor(new Image("file:Media/Visuals/Cursor.png")));
+        this.setCursor(new ImageCursor(new Image("file:Media/Visuals/Cursor.png")));
 
         Media media = new Media(new File("Media/Sounds/Credits Video.mp4").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
