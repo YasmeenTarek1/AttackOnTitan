@@ -23,10 +23,10 @@ public class WeaponPane extends HBox {
 
     public void addInfo() {
         switch(code) {
-            case 1 -> view = new ImageView(new Image("file:Media/Visuals/Piercing Cannon.png"));
-            case 3 -> view = new ImageView(new Image("file:Media/Visuals/Volley Spread Cannon.png"));
-            case 2 -> view = new ImageView(new Image("file:Media/Visuals/Sniper Cannon.png"));
-            default -> view = new ImageView(new Image("file:Media/Visuals/Wall Trap.png"));
+            case 1 : view = new ImageView(new Image("file:Media/Visuals/Piercing Cannon.png")); break;
+            case 3 : view = new ImageView(new Image("file:Media/Visuals/Volley Spread Cannon.png")); break;
+            case 2 : view = new ImageView(new Image("file:Media/Visuals/Sniper Cannon.png")); break;
+            default : view = new ImageView(new Image("file:Media/Visuals/Wall Trap.png"));
         }
     }
 }

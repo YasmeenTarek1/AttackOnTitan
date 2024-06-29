@@ -314,22 +314,25 @@ public class BattleGUI extends Scene {
         ImageView characterIntro;
         ImageView generalInfo = new ImageView(new Image("file:Media/Visuals/At the start of each turn.png"));
         switch ((CharactersScene.character)) {
-            case "Levi" -> {
+            case "Levi" : {
                 imageView = new ImageView(new Image("file:Media/Visuals/Levi No-Background.png"));
                 path = "Media/Sounds/Hey I'm Levi.mp3";
                 characterIntro = new ImageView(new Image("file:Media/Visuals/Levi Text.png"));
+                break;
             }
-            case "Mikasa" -> {
+            case "Mikasa" : {
                 imageView = new ImageView("file:Media/Visuals/Mikasa No-Background.png");
                 path = "Media/Sounds/Hey I'm Mikasa.mp3";
                 characterIntro = new ImageView(new Image("file:Media/Visuals/Mikasa Text.png"));
+                break;
             }
-            case "Armin" -> {
+            case "Armin" : {
                 imageView = new ImageView(new Image("file:Media/Visuals/Armin No-Background.png"));
                 path = "Media/Sounds/Hey I'm Armin.mp3";
                 characterIntro = new ImageView(new Image("file:Media/Visuals/Armin Text.png"));
+                break;
             }
-            default -> {
+            default : {
                 imageView = new ImageView(new Image("file:Media/Visuals/Eren No-Background.png"));
                 path = "Media/Sounds/Hey I'm Eren.mp3";
                 characterIntro = new ImageView(new Image("file:Media/Visuals/Eren Text.png"));
@@ -413,19 +416,21 @@ public class BattleGUI extends Scene {
         for (Node node : root.getChildren())
             node.setEffect(new GaussianBlur(15));
 
-        DropShadow glow = new DropShadow();        // glowing border
-        glow.setColor(Color.LIGHTBLUE);
-        glow.setWidth(30);                         // width of the glow
-        glow.setHeight(30);                        // height of the glow
-        glow.setSpread(0.5);
+        if(b.getNumberOfTurns() == 15) {
+            DropShadow glow = new DropShadow();        // glowing border
+            glow.setColor(Color.LIGHTBLUE);
+            glow.setWidth(30);                         // width of the glow
+            glow.setHeight(30);                        // height of the glow
+            glow.setSpread(0.5);
 
-        buttons.setEffect(new GaussianBlur(0));
-        for(Node n : buttons.getChildren()) {
-            if (n != AI)
-                n.setEffect(new GaussianBlur(15));
-            else {
-                n.setEffect(new GaussianBlur(0));
-                n.setEffect(glow);
+            buttons.setEffect(new GaussianBlur(0));
+            for (Node n : buttons.getChildren()) {
+                if (n != AI)
+                    n.setEffect(new GaussianBlur(15));
+                else {
+                    n.setEffect(new GaussianBlur(0));
+                    n.setEffect(glow);
+                }
             }
         }
 
@@ -632,8 +637,7 @@ public class BattleGUI extends Scene {
             updateGUI();
             FinishWeaponShop = true;
         } catch (InvalidLaneException e) {
-
-
+            
             ImageView invalidlanesMessage = new ImageView(new Image("file:Media/Visuals/Defeated Lanes Exception.png"));
             invalidlanesMessage.setFitWidth(300);
             invalidlanesMessage.setFitHeight(340);
