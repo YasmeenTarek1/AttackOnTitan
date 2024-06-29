@@ -1,8 +1,9 @@
 package View;
 
 import Controller.Controller;
-import Model.Engine.Battle;
+
 import Model.Exceptions.InsufficientResourcesException;
+import Model.Engine.Battle;
 import Model.Exceptions.InvalidLaneException;
 import Model.Lanes.Lane;
 import Model.Titans.*;
@@ -267,7 +268,6 @@ public class BattleGUI extends Scene {
             v.setTranslateX(-138);
             v.getChildren().addAll(lane1, lane2, lane3, lane4, lane5);
         }
-
         chooselanesroot.getChildren().addAll(v);
         chooselanesroot.setCursor(new ImageCursor(new Image("file:Media/Visuals/Cursor.png")));
 
