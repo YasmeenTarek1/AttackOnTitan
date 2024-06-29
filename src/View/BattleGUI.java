@@ -1,8 +1,9 @@
 package View;
 
 import Controller.Controller;
-import Model.Engine.Battle;
+
 import Model.Exceptions.InsufficientResourcesException;
+import Model.Engine.Battle;
 import Model.Exceptions.InvalidLaneException;
 import Model.Lanes.Lane;
 import Model.Titans.*;
