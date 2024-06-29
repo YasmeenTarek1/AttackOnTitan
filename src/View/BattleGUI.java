@@ -637,7 +637,7 @@ public class BattleGUI extends Scene {
             updateGUI();
             FinishWeaponShop = true;
         } catch (InvalidLaneException e) {
-            
+
             ImageView invalidlanesMessage = new ImageView(new Image("file:Media/Visuals/Defeated Lanes Exception.png"));
             invalidlanesMessage.setFitWidth(300);
             invalidlanesMessage.setFitHeight(340);
