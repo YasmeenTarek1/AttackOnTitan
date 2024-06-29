@@ -18,6 +18,7 @@ public class CreditsScene extends Scene{
     public CreditsScene(Pane root) {
         super(root);
         Controller.music.stop();
+     this.setCursor(new ImageCursor(new Image("file:Media/Visuals/Cursor.png")));
 
         Media media = new Media(new File("Media/Sounds/Credits Video.mp4").toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
