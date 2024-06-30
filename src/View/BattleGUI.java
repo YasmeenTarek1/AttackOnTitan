@@ -457,11 +457,11 @@ public class BattleGUI extends Scene {
             text = new ImageView(new Image("file:Media/Visuals/Intense Text.png"));
         }
 
-        imageView = switch ((CharactersScene.character)) {
-            case "Levi" -> new ImageView(new Image("file:Media/Visuals/Levi No-Background.png"));
-            case "Mikasa" -> new ImageView("file:Media/Visuals/Mikasa No-Background.png");
-            case "Armin" -> new ImageView(new Image("file:Media/Visuals/Armin No-Background.png"));
-            default -> new ImageView(new Image("file:Media/Visuals/Eren No-Background.png"));
+        switch ((CharactersScene.character)) {
+            case "Levi" : imageView = new ImageView(new Image("file:Media/Visuals/Levi No-Background.png"));break;
+            case "Mikasa" : imageView = new ImageView("file:Media/Visuals/Mikasa No-Background.png");break;
+            case "Armin" : imageView =  new ImageView(new Image("file:Media/Visuals/Armin No-Background.png"));break;
+            default : imageView =  new ImageView(new Image("file:Media/Visuals/Eren No-Background.png"));
         };
         Pane image = new Pane(imageView);
         imageView.setLayoutX(900);
