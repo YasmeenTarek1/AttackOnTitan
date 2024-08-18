@@ -1,6 +1,6 @@
-package View;
+package View.Scenes;
 
-import Controller.Controller;
+import View.GameElements.ButtonGame;
 import javafx.animation.FadeTransition;
 import javafx.animation.SequentialTransition;
 import javafx.scene.ImageCursor;
@@ -10,7 +10,6 @@ import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -20,17 +19,19 @@ import javafx.util.Duration;
 
 public class CharactersScene extends Scene {
 
-    private final StackPane root = new StackPane();
+    public final StackPane root = new StackPane();
     private final HBox menuBox = new HBox(95);
-    private ButtonGame ch1, ch2, ch3, ch4;
-    static String character;
+    private final ButtonGame ch1;
+    private final ButtonGame ch2;
+    private final ButtonGame ch3;
+    private final ButtonGame ch4;
 
     public CharactersScene(Pane p) {
-        super(p , 1550 , 870);
+        super(p, 1550, 870);
 
         setBackground(new Image("file:Media/Visuals/Background 2.jpg"));
-
         this.setCursor(new ImageCursor(new Image("file:Media/Visuals/Cursor.png")));
+
         ImageView viewLevi = new ImageView(new Image("file:Media/Visuals/Levi.png"));
         ImageView viewArmin = new ImageView(new Image("file:Media/Visuals/Armin.png"));
         ImageView viewMikasa = new ImageView("file:Media/Visuals/Mikasa.png");
@@ -60,7 +61,7 @@ public class CharactersScene extends Scene {
         viewMikasa.setEffect(glow);
 
         HBox images = new HBox(30);
-        images.getChildren().addAll(viewLevi, viewArmin, viewMikasa , viewEren);
+        images.getChildren().addAll(viewLevi, viewArmin, viewMikasa, viewEren);
         images.setTranslateX(22);
         images.setTranslateY(40);
 
@@ -82,34 +83,6 @@ public class CharactersScene extends Scene {
 
         startAnimation();
         this.setRoot(root);
-
-        ch1.getButton().setOnAction(e -> {
-            character = "Levi";
-            Scene nxt = new ModeScene(new StackPane());
-            Controller.window.setScene(nxt);
-        });
-        ch2.getButton().setOnAction(e -> {
-            character = "Armin";
-            Scene nxt = new ModeScene(new StackPane());
-            Controller.window.setScene(nxt);
-        });
-        ch3.getButton().setOnAction(e -> {
-            character = "Mikasa";
-            Scene nxt = new ModeScene(new StackPane());
-            Controller.window.setScene(nxt);
-        });
-        ch4.getButton().setOnAction(e -> {
-            character = "Eren";
-            Scene nxt = new ModeScene(new StackPane());
-            Controller.window.setScene(nxt);
-        });
-        setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.ESCAPE) {
-                Controller.window.close();
-                System.exit(0);
-            }
-        });
-
     }
 
     private void setBackground(Image img) {
@@ -120,6 +93,7 @@ public class CharactersScene extends Scene {
         backgroundImageView.setFitHeight(870);
         root.getChildren().add(backgroundImageView);
     }
+
 
     private void startAnimation() {
         SequentialTransition seqTransition = new SequentialTransition(); // combine multiple animations
@@ -140,6 +114,22 @@ public class CharactersScene extends Scene {
         }
 
         seqTransition.play();
+    }
+
+    public ButtonGame getCh1() {
+        return ch1;
+    }
+
+    public ButtonGame getCh2() {
+        return ch2;
+    }
+
+    public ButtonGame getCh3() {
+        return ch3;
+    }
+
+    public ButtonGame getCh4() {
+        return ch4;
     }
 
 }

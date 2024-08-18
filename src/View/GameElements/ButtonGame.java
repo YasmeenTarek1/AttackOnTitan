@@ -1,4 +1,4 @@
-package View;
+package View.GameElements;
 
 import javafx.animation.TranslateTransition;
 import javafx.scene.control.Button;
@@ -16,8 +16,8 @@ import java.io.File;
 
 public class ButtonGame extends Pane {
 
-    private Button button;
-    private ImageView view;
+    private final Button button;
+    private final ImageView view;
 
     public ButtonGame(Image img, int w, int h) {
         view = new ImageView(img);

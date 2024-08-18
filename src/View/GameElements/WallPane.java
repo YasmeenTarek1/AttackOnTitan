@@ -1,5 +1,6 @@
-package View;
+package View.GameElements;
 
+import View.Scenes.BattleGUI;
 import javafx.animation.TranslateTransition;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
@@ -13,23 +14,22 @@ import javafx.util.Duration;
 
 
 public class WallPane extends VBox {
-    private ButtonGame b;
-    private GridPane weapons;
+    private final GridPane weapons;
     public ProgressBar hpBar;
     public boolean fire = false;
-    private int end;
+    private final int end;
     private int i = 0, j = 0; // Initial row and column index
-    private ImageView fire1 , fire2 , fire3;
+    private ImageView fire1, fire2, fire3;
 
-    public WallPane(Image img, int w, int h, int x, int y) {
-        b = new ButtonGame(img, w, h);
+    public WallPane(Image img, int width, int height, int translateX, int translateY) {
+        ButtonGame b = new ButtonGame(img, width, height);
 
-        setMinWidth(w);
-        setMaxWidth(w);
-        setMinHeight(h);
-        setMaxHeight(h);
-        setTranslateX(x);
-        setTranslateY(y);
+        setMinWidth(width);
+        setMaxWidth(width);
+        setMinHeight(height);
+        setMaxHeight(height);
+        setTranslateX(translateX);
+        setTranslateY(translateY);
         setSpacing(10);
 
         weapons = new GridPane();
@@ -45,12 +45,11 @@ public class WallPane extends VBox {
         weaponsContainer.setMinSize(200, 200);
         weaponsContainer.setMaxSize(200, 200);
 
-        if(BattleGUI.b.getOriginalLanes().size() == 3) {
+        if (BattleGUI.b.getOriginalLanes().size() == 3) {
             weaponsContainer.setTranslateX(80);
             weaponsContainer.setTranslateY(90);
             end = 2;
-        }
-        else{
+        } else {
             weaponsContainer.setTranslateX(110);
             weaponsContainer.setTranslateY(85);
             end = 1;
@@ -95,21 +94,21 @@ public class WallPane extends VBox {
         translateTransition.setToY(100); // Move to the normal position
         translateTransition.play();
     }
-    public void setEffectEND(){ // Giant Fire when the lane is lost
+
+    public void setEffectEND() { // Giant Fire when the lane is lost
         getChildren().remove(fire1);
         getChildren().remove(fire2);
-        if(BattleGUI.b.getOriginalLanes().size() == 3)
+        if (BattleGUI.b.getOriginalLanes().size() == 3)
             getChildren().remove(fire3);
 
         ImageView fire = new ImageView(new Image("file:Media/Visuals/Fire Effect.gif"));
 
-        if(BattleGUI.b.getOriginalLanes().size() == 3) {
+        if (BattleGUI.b.getOriginalLanes().size() == 3) {
             fire.setFitWidth(280);
             fire.setFitHeight(230);
             fire.setTranslateX(-15);
             fire.setTranslateY(-265);
-        }
-        else {
+        } else {
             fire.setFitWidth(200);
             fire.setFitHeight(150);
             fire.setTranslateX(5);
@@ -117,13 +116,14 @@ public class WallPane extends VBox {
         }
         getChildren().add(fire);
     }
-    public void setEffectMID(){  // Small Fires when the lane's hp < 0.5
+
+    public void setEffectMID() {  // Small Fires when the lane's hp < 0.5
 
         fire1 = new ImageView(new Image("file:Media/Visuals/Fire Effect.gif"));
         fire2 = new ImageView(new Image("file:Media/Visuals/Fire Effect.gif"));
         fire3 = new ImageView(new Image("file:Media/Visuals/Fire Effect.gif"));
 
-        if(BattleGUI.b.getOriginalLanes().size() == 3) {
+        if (BattleGUI.b.getOriginalLanes().size() == 3) {
             fire1.setFitWidth(50);
             fire1.setFitHeight(50);
 
@@ -142,9 +142,8 @@ public class WallPane extends VBox {
             fire3.setTranslateX(150);
             fire3.setTranslateY(-360);
 
-            getChildren().addAll(fire1 , fire2 , fire3);
-        }
-        else{
+            getChildren().addAll(fire1, fire2, fire3);
+        } else {
             fire1.setFitWidth(40);
             fire1.setFitHeight(40);
 
@@ -157,7 +156,7 @@ public class WallPane extends VBox {
             fire2.setTranslateX(60);
             fire2.setTranslateY(-305);
 
-            getChildren().addAll(fire1 , fire2);
+            getChildren().addAll(fire1, fire2);
         }
     }
 }

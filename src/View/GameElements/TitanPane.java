@@ -1,4 +1,4 @@
-package View;
+package View.GameElements;
 
 import javafx.animation.TranslateTransition;
 import javafx.geometry.Bounds;
@@ -11,12 +11,13 @@ import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
 public class TitanPane extends VBox {
-    public ImageView titan , Explosion;
+    public ImageView titan, Explosion;
     public Image img;
     public ProgressBar hpBar;
 
     public TitanPane(Image img, int w, int h) {
         this.img = img;
+
         hpBar = new ProgressBar();
         hpBar.setPrefWidth(100);
         hpBar.setPrefHeight(15);
@@ -27,7 +28,9 @@ public class TitanPane extends VBox {
         titan = new ImageView(img);
         titan.setFitWidth(w);
         titan.setFitHeight(h);
+
         setAlignment(Pos.CENTER_LEFT); // Align titan to the left within the HBox
+
         getChildren().addAll(titan, hpBar);
     }
 
@@ -42,14 +45,14 @@ public class TitanPane extends VBox {
         translate = new TranslateTransition();
         translate.setNode(hpBar);
         translate.setDuration(Duration.millis(1250));
+
         if (this.img.getUrl().equals("file:Media/Visuals/Colossal Titan.png")) {
-            translate.setByX(x*40);
+            translate.setByX(x * 40);
             translate.setByY(28);
             translate.play();
-        }
-        else {
+        } else {
             translate.setByX(x * 40);
-            if (this.img.getUrl().equals( "file:Media/Visuals/Abnormal Titan.png"))
+            if (this.img.getUrl().equals("file:Media/Visuals/Abnormal Titan.png"))
                 translate.setByY(65);
             else
                 translate.setByY(50);
@@ -65,7 +68,7 @@ public class TitanPane extends VBox {
         // Use localToParent to get the titan's position relative to its parent
         Bounds bounds = titan.localToParent(titan.getBoundsInLocal());
         Explosion.setTranslateX(bounds.getMinX());
-        Explosion.setTranslateY(bounds.getMinY()-10);
+        Explosion.setTranslateY(bounds.getMinY() - 10);
 
         StackPane overlayPane = new StackPane(titan, Explosion);
         getChildren().clear();
