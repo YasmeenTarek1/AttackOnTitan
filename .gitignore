@@ -28,3 +28,6 @@ build/
 bin/
 out/
 dist/
+
+# Serialization Files
+*.ser
