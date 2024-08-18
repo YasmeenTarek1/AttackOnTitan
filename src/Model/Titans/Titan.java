@@ -4,7 +4,14 @@ import Model.Interfaces.Attackee;
 import Model.Interfaces.Attacker;
 import Model.Interfaces.Mobil;
 
-public abstract class Titan implements Attacker, Attackee, Mobil, Comparable<Titan> , Cloneable{
+import java.io.Serial;
+import java.io.Serializable;
+
+public abstract class Titan implements Attacker, Attackee, Mobil, Comparable<Titan> , Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 3L;
+
     private final int baseHealth;     //  Original titan’s health
     private int currentHealth;        //  Current titan’s health
     private final int baseDamage;     //  Amount of damage a titan would cause while attacking a wall
@@ -24,14 +31,6 @@ public abstract class Titan implements Attacker, Attackee, Mobil, Comparable<Tit
         this.speed = speed;
         this.resourcesValue = resourcesValue;
         this.dangerLevel = dangerLevel;
-    }
-    @Override
-    public Titan clone() {
-        try {
-            return (Titan) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(); // Should never happen since we implement Cloneable
-        }
     }
 
     public int getBaseHealth() {

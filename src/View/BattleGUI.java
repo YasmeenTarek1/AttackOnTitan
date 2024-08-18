@@ -33,8 +33,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -744,25 +743,51 @@ public class BattleGUI extends Scene {
     }
 
     public int[] tryOption(Battle test, Lane lane, int WeaponCode) {
-        int[] arr = new int[2];
+        int[] results = new int[2];
+
         try {
             test.purchaseWeapon(WeaponCode, lane);
-        } catch (Exception e) {
+        } catch (Exception e) {         // In case of Insufficient Resources or Invalid Lane
             return new int[]{-1 , -1};
         }
 
-        arr[0] = test.getScore();
-        arr[1] = test.getResourcesGathered();
-        return arr;
+        results[0] = test.getScore();
+        results[1] = test.getResourcesGathered();
+        return results;
+    }
+
+    public Battle serialize(){
+        Battle deserializedBattle = null;
+
+        try (FileOutputStream fileOut = new FileOutputStream("battle.ser");
+             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+            out.writeObject(b);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Deserialize the Cat object from the file
+        try (FileInputStream fileIn = new FileInputStream("battle.ser");
+             ObjectInputStream in = new ObjectInputStream(fileIn)) {
+            deserializedBattle = (Battle) in.readObject();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return deserializedBattle;
     }
 
     private void AI() {
+
+        // Basic Idea --> try all Possibilities and apply the best
+        // (Highest Score or if there is a tie, then the least amount of money spent)
+
         int maxScore = -1, maxMoney = -1, WeaponCode = -1, lane = -1;
         for (int i = 0; i < numOfLanes; i++) {     // loop on lanes
 
             for (int j = 1; j <= 4; j++) {         // loop on weapons
 
-                Battle test = b.clone();           // create new battle with the same state of b
+                Battle test = serialize();           // create new battle with the same state of b
                 ArrayList<Lane> temp = new ArrayList<>();
 
                 for (int k = 0; k < i; k++)       // get the chosen Lane

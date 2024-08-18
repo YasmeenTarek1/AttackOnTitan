@@ -4,11 +4,15 @@ import Model.Titans.Titan;
 import Model.Wall.Wall;
 import Model.Weapons.Weapon;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
-public class Lane implements Comparable<Lane> , Cloneable {        // Lanes in which a titan walk on to the wall
+public class Lane implements Comparable<Lane> , Serializable {        // Lanes in which a titan walk on to the wall
 
+    @Serial
+    private static final long serialVersionUID = 2L;
     private Wall laneWall;                     // A wall object found in the lane
     private int dangerLevel;                         // The danger level of a lane based on the danger level of the titans on it.
     private PriorityQueue<Titan> titans;       // All titans in a given lane
@@ -21,29 +25,6 @@ public class Lane implements Comparable<Lane> , Cloneable {        // Lanes in w
         this.titans = new PriorityQueue<>();
         this.weapons = new ArrayList<>();
     }
-    @Override
-    public Lane clone() {
-        try {
-            Lane clonedLane = (Lane) super.clone();
-            // Deep clone laneWall
-            clonedLane.laneWall = this.laneWall.clone();
-            // Deep clone titans
-            clonedLane.titans = new PriorityQueue<>();
-            for (Titan titan : this.titans) {
-                clonedLane.titans.add(titan.clone());
-            }
-            // Deep clone weapons
-            clonedLane.weapons = new ArrayList<>();
-            for (Weapon weapon : this.weapons) {
-                clonedLane.weapons.add(weapon.clone());
-            }
-            return clonedLane;
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
-    }
-
-
 
     public Wall getLaneWall() {
         return this.laneWall;

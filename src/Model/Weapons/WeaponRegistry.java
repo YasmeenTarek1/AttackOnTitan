@@ -1,6 +1,13 @@
 package Model.Weapons;
 
-public class WeaponRegistry {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class WeaponRegistry implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 9L;
+
     private final int code;    // The type of weapon.
     private int price;        // price of the weapon.
     private int damage;        // Amount of damage a weapon can cause

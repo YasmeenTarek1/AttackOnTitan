@@ -2,7 +2,14 @@ package Model.Wall;
 
 import Model.Interfaces.Attackee;
 
-public class Wall implements Attackee , Cloneable {            // A class represents the Walls which Titan attacks
+import java.io.Serial;
+import java.io.Serializable;
+
+public class Wall implements Attackee  , Serializable {            // A class represents the Walls which Titan attacks
+
+    @Serial
+    private static final long serialVersionUID = 5L;
+
     private final int baseHealth;        //  Original value of the wall’s health
     private int currentHealth;            //  Current Wall's health
 
@@ -10,14 +17,6 @@ public class Wall implements Attackee , Cloneable {            // A class repres
         super();
         this.baseHealth = baseHealth;
         this.currentHealth = baseHealth;
-    }
-    @Override
-    public Wall clone() {
-        try {
-            return (Wall) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(); // Should never happen since we implement Cloneable
-        }
     }
 
     public int getBaseHealth() {

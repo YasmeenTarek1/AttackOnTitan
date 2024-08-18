@@ -1,7 +1,13 @@
 package Model.Titans;
 
-public class TitanRegistry {
+import java.io.Serial;
+import java.io.Serializable;
+
+public class TitanRegistry implements Serializable {
     // A place to store the titan’s information that was read from the csv file read in the data loader.
+
+    @Serial
+    private static final long serialVersionUID = 4L;
 
     private final int code;                 // Type of titan.
     private final int baseHealth;           //  Original titan’s health

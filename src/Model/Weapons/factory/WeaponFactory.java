@@ -6,9 +6,14 @@ import Model.Weapons.Weapon;
 import Model.Weapons.WeaponRegistry;
 
 import java.io.IOException;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class WeaponFactory {    // (SHOP) Available weapons can be purchased during each turn.
+public class WeaponFactory implements Serializable {    // (SHOP) Available weapons can be purchased during each turn.
+
+    @Serial
+    private static final long serialVersionUID = 7L;
 
     private final HashMap<Integer, WeaponRegistry> weaponShop;
 

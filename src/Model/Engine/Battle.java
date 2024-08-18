@@ -12,13 +12,18 @@ import Model.Weapons.factory.FactoryResponse;
 import Model.Weapons.factory.WeaponFactory;
 
 import java.io.IOException;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
 import static Model.Engine.BattlePhase.EARLY;
 
-public class Battle implements Cloneable{                    // The Game itself (The main Model.engine that manages the flow of the game)
+public class Battle implements Serializable {                    // The Game itself (The main Model.engine that manages the flow of the game)
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     private static final int[][] PHASES_APPROACHING_TITANS = {            // A 2D array containing titans’ codes, representing the refilling order of titans during each phase.
             {1, 1, 1, 2, 1, 3, 4},
@@ -54,30 +59,6 @@ public class Battle implements Cloneable{                    // The Game itself 
         this.initializeLanes(initialNumOfLanes);
         this.addedTitansToTheLane = new ArrayList<>();
     }
-
-    @Override
-    public Battle clone() {
-        try {
-            Battle clonedBattle = (Battle) super.clone();
-            clonedBattle.weaponFactory = this.weaponFactory;
-            clonedBattle.titansArchives = this.titansArchives;
-            clonedBattle.approachingTitans = new ArrayList<>();
-            for (Titan titan : this.approachingTitans) {
-                clonedBattle.approachingTitans.add(titan.clone());
-            }
-            clonedBattle.lanes = new PriorityQueue<>();
-            clonedBattle.originalLanes = new ArrayList<>();
-            for (Lane lane : this.originalLanes) {
-                Lane l = lane.clone();
-                clonedBattle.originalLanes.add(l);
-                clonedBattle.lanes.add(l);
-            }
-            return clonedBattle;
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(); // Should never happen since we implement Cloneable
-        }
-    }
-
         public int getNumberOfTurns() {
         return numberOfTurns;
     }
@@ -191,26 +172,21 @@ public class Battle implements Cloneable{                    // The Game itself 
     }
 
     public void purchaseWeapon(int weaponCode, Lane lane) throws InsufficientResourcesException, InvalidLaneException {
-        if (!this.getLanes().contains(lane)) {
+        if (!this.getLanes().contains(lane))
             throw new InvalidLaneException("Weapon purchase failed");
-        }
 
         // Get the factory response from the weapon factory
         FactoryResponse factoryResponse = this.getWeaponFactory().buyWeapon(getResourcesGathered(), weaponCode);
 
         if (factoryResponse != null && factoryResponse.getWeapon() != null) {
-            // Clone the factory response to get a deep copy
-            FactoryResponse factoryResponseCLONED = factoryResponse.clone();
-            Weapon purchasedWeapon = factoryResponseCLONED.getWeapon();
+            Weapon purchasedWeapon = factoryResponse.getWeapon();
             lane.addWeapon(purchasedWeapon);
-            this.setResourcesGathered(factoryResponseCLONED.getRemainingResources());
+            this.setResourcesGathered(factoryResponse.getRemainingResources());
             performTurn();
         }
     }
 
-
-
-public void passTurn() {
+    public void passTurn() {
         performTurn();
     }
 

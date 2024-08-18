@@ -2,7 +2,13 @@ package Model.Weapons.factory;
 
 import Model.Weapons.Weapon;
 
-public class FactoryResponse implements Cloneable{        // weapon bought with the remaining resources
+import java.io.Serial;
+import java.io.Serializable;
+
+public class FactoryResponse implements Serializable {        // weapon bought with the remaining resources
+
+    @Serial
+    private static final long serialVersionUID = 6L;
 
     private Weapon weapon;
     private final int remainingResources;
@@ -11,16 +17,6 @@ public class FactoryResponse implements Cloneable{        // weapon bought with 
         super();
         this.weapon = weapon;
         this.remainingResources = remainingResources;
-    }
-    @Override
-    public FactoryResponse clone() {
-        try {
-            FactoryResponse clonedResponse = (FactoryResponse) super.clone();
-            clonedResponse.weapon = this.weapon.clone();
-            return clonedResponse;
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
     }
 
     public Weapon getWeapon() {

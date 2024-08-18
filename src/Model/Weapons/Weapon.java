@@ -3,24 +3,21 @@ package Model.Weapons;
 import Model.Interfaces.Attacker;
 import Model.Titans.Titan;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.PriorityQueue;
 
-public abstract class Weapon implements Attacker , Cloneable{
+public abstract class Weapon implements Attacker  , Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 8L;
+
     private final int baseDamage;    // Amount of damage a weapon can cause
 
     public Weapon(int baseDamage) {
         super();
         this.baseDamage = baseDamage;
     }
-    @Override
-    public Weapon clone() {
-        try {
-            return (Weapon) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError(); // Should never happen since we implement Cloneable
-        }
-    }
-
     @Override
     public int getDamage() {
         return this.baseDamage;
