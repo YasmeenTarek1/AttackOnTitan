@@ -7,7 +7,7 @@
 - [👺 Enemy Characters](#-enemy-characters)
    - [Titan Attributes](#titan-attributes)
    - [Titan Types](#titan-types)
-- [⚔️ Friendly Pieces (Weapons)](#-friendly-pieces-weapons)
+- [⚔️ Friendly Pieces](#-friendly-pieces)
 - [🛡️ Game Rules](#-game-rules)
 - [🖥️ Technologies and Tools Used](#-technologies-and-tools-used)
 - [🎥 Demo Video](#-demo-video)
@@ -43,7 +43,7 @@ The battlefield is divided into multiple lanes, each featuring:
 - **Abnormal Titan**: ⚡ Performs double attacks per turn.
 - **Armored Titan**: 🛡️ Takes only 25% of intended damage.
 - **Colossal Titan**: 💨 Increases speed after every movement.
-## ⚔️ Friendly Pieces (Weapons)
+## ⚔️ Friendly Pieces
 All weapon types behave uniquely while performing their attack actions:
 - **Piercing Cannon**: 🎯 Attacks the closest **5 titans** to the wall on the weapon’s lane each turn.
 - **Sniper Cannon**: 🔭 Attacks the **first closest titan** to the wall on the weapon’s lane each turn.
