@@ -41,7 +41,7 @@ The battlefield is divided into multiple lanes, each featuring:
 - Titans advancing toward the wall.
 
 ## 👺 Enemy Characters
-### Titans come with various attributes:
+### Titan Attributes:
 - **HP**: Health points of the titan.
 - **Damage**: Damage inflicted by the titan on the wall.
 - **Height**: Height of the titan (doesn't affect gameplay).
@@ -110,5 +110,5 @@ Feel free to explore the gameplay and get a closer look at what the game offers.
       ```sh
       --module-path "path/to/javafx-sdk/lib" --add-modules javafx.controls,javafx.fxml,javafx.media
       ```
-## 🤝 Contributing 
-Feel free to fork the repository and submit pull requests. Ensure that your contributions follow the game's design and rules outlined in the game design document.
+## 🤝 Contributing
+Feel free to fork the repository and submit pull requests. Ensure that your contributions follow the game's design.
