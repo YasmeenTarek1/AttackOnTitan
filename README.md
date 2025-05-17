@@ -90,6 +90,7 @@ All weapon types behave uniquely while performing their attack actions:
 Check out our game in action! Watch the full demo video to see all aspects of *Attack on Titan: Utopia* and try out its features.
 
 - [🔗 LinkedIn Post with Video](https://www.linkedin.com/posts/activity-7213468099470098432-5Bdz?utm_source=share&utm_medium=member_desktop)
+- [🔗 Direct Video Link (alternative access)](https://drive.google.com/file/d/18yaZbQtLwpWzzwnzspnwoyLON3rKR7TY/view?usp=sharing)
 
 Feel free to explore the gameplay and get a closer look at what the game offers.
 
